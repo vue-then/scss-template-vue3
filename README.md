@@ -1,4 +1,4 @@
-# datav-screen-dev
+# scss-template-vue3
 
 ## Project setup
 ```
