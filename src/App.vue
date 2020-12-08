@@ -1,24 +1,38 @@
 <template>
-  <div id="app">
-   <router-view></router-view>
-  </div>
+	<div id="app" class="defalut">
+		<router-view v-if="isRouterAlive"/>
+	</div>
 </template>
-
 <style lang="scss">
-  html,body,#app{
-    width: 100%;
+  #app {
+    text-align: center;
+    color: #2c3e50;
     height: 100%;
   }
-  html,body,#app {
-    padding: 0;
-    margin: 0;
-  }
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  color: #2c3e50;
-}
-
+  @import '~/assets/scss/init.scss';
+  @import '~/assets/scss/border.scss';
 </style>
+<script>
+export default {
+  name: "app",
+  provide() {
+    return {
+      reload: this.reload
+    };
+  },
+  data() {
+    return {
+      isRouterAlive: true
+    };
+  },
+  methods: {
+    reload() {
+      this.isRouterAlive = false;
+      this.$nextTick(function() {
+        this.isRouterAlive = true;
+      });
+    }
+  }
+};
+</script>
+
